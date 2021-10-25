@@ -1,7 +1,7 @@
 #include "loadFile.h"
 
 bool loadFile(float **  matrix1, float **  matrix2, int &rowOfMatrix1, int &colOfMatrix1, int &rowOfMatrix2, int &colOfMatrix2) {
-    int outOfLoop = 0, row = 0, col = 0;
+    int outOfLoop = 0;
     string path, input;
     cin.clear();
     cin.ignore(999,'\n');

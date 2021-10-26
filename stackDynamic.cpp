@@ -4,9 +4,9 @@
 
 using namespace std;
 
-void addition (int arr1[][100], int arr2[][100], int n, int m);
-void subtraction (int arr1[][100], int arr2[][100], int n, int m);
-void multiplication(int arr1[][100], int arr2[][100], const int n1, const int n2, const int m1, const int m2);
+void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
+void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
+void multiplication(int arr1[][100], int arr2[][100], int n1, int n2, int m1, int m2);
 
 
 int main() {
@@ -30,20 +30,22 @@ int main() {
     switch(option) {
         case 0: return 0;
         case 1: 
-            ifstream fp("file.txt");
-            if (! fp) {
-                cout << "Error, file couldn't be opened" << endl; 
-                return 1; 
-            }    
-            for(int row = 0; row < 100; row++) {  // stop loops if nothing to read
-            for(int column = 0; column < 100; column++){
-                    fp >> arr1[row][column];
-                    if ( ! fp ) {
-                    cout << "Error reading file for element " << row << "," << column << endl; 
+            {
+                ifstream fp("file.txt");
+                if (! fp) {
+                    cout << "Error, file couldn't be opened" << endl; 
                     return 1; 
+                }    
+                for(int row = 0; row < 100; row++) {  // stop loops if nothing to read
+                for(int column = 0; column < 100; column++){
+                        fp >> arr1[row][column];
+                        if ( ! fp ) {
+                        cout << "Error reading file for element " << row << "," << column << endl; 
+                        return 1; 
+                        }
                     }
                 }
-            };
+            }
             break;
         case 2: 
             break;
@@ -80,39 +82,16 @@ int main() {
             case 0: outOfLoop = false; break;
             //Addition
             case 1: 
-                result = add(matrix1, matrix2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2);
-                if(result != nullptr) {
-                    cout <<"The addition's result is:\n";
-                    display(result, rowOfMatrix1, colOfMatrix2);
-                }
-                else 
-                    cout << "Cannot add\n";
-                break;
+                addition(arr1, arr2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2); break;
             //Subtraction
             case 2:
-                result = sub(matrix1, matrix2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2);
-                if(result != nullptr) {
-                    cout <<"The subtraction's result is:\n";
-                    display(result, rowOfMatrix1, colOfMatrix2);
-                }
-                else 
-                    cout << "Cannot subtract\n";
-                break;
+                subtraction(arr1, arr2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2); break;
             //Multiplication
             case 3:
-                result = multiply(matrix1, matrix2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2);
-                if(result != nullptr) {
-                    cout <<"The multiplication's result is:\n";
-                    display(result, rowOfMatrix1, colOfMatrix2);
-                }
-                else 
-                    cout << "Cannot multiply\n";
-                break;
+                multiplication(arr1, arr2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2); break;
             case 4:
                 //Remove the old matrices
-                remove(matrix1, rowOfMatrix1);
-                remove(matrix2, rowOfMatrix2);
-                remove(result, rowOfMatrix1);
+                
 
                 //Create new matrices
                 //Load file or input from key board
@@ -127,17 +106,31 @@ int main() {
                 cin >> option;
 
                 switch(option) {
-                    case 0: return 0;
-                    case 1: loadFile(matrix1, matrix2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2); break;
-                    case 2: 
-                        //Create the first 2D dynamic array
-                        matrix1 = createMatrix("Enter the size of the first matrix (a b): ", rowOfMatrix1, colOfMatrix1);
-
-                        //Create the second 2D dynamic array
-                        matrix2 = createMatrix("Enter the size of the second matrix (a b): ", rowOfMatrix2, colOfMatrix2); 
-                        break;
-                    default: continue; 
+        case 0: return 0;
+        case 1: 
+            {
+                ifstream fp("file.txt");
+                if (! fp) {
+                    cout << "Error, file couldn't be opened" << endl; 
+                    return 1; 
+                }    
+                for(int row = 0; row < 100; row++) {  // stop loops if nothing to read
+                for(int column = 0; column < 100; column++){
+                        fp >> arr1[row][column];
+                        if ( ! fp ) {
+                        cout << "Error reading file for element " << row << "," << column << endl; 
+                        return 1; 
+                        }
+                    }
                 }
+            }
+            break;
+        case 2: 
+            break;
+        default: 
+            cout << "Wrong input. Exit\n";
+            exit(1); 
+    }
                 break;
             //Come back to menu if user enter something else
             default: continue;
@@ -146,31 +139,44 @@ int main() {
     return 0;
 }
 
-void addition (float arr1[][100], float arr2[][100], int n, int m){
-    for(int i = 0; i < n; i++){
-        for(int s = 0; s < m; s++){
-            arr1[n][m] += arr2[n][m];
+void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
+    if(n1 == n2 && m1 == m2){
+        cout << "Result after addtion is:/n";
+        for(int i = 0; i < n1; i++){
+            for(int s = 0; s < m1; s++){
+                arr1[i][s] += arr2[i][s];
+                cout << arr1[i][s] << " ";
+            }
+            cout << endl;
         }
     }
+    else cout << "Cannot perform addition due to wrong matrices dimension./n";
 }
 
-void subtraction (float arr1[][100], float arr2[][100], int n, int m){
-    for(int i = 0; i < n; i++){
-        for(int s = 0; s < m; s++){
-            arr1[n][m] -= arr2[n][m];
+void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
+    if(n1 == n2 && m1 == m2){
+        cout << "Result after subtraction is:/n";
+        for(int i = 0; i < n1; i++){
+            for(int s = 0; s < m1; s++){
+                arr1[i][s] -= arr2[i][s];
+                cout << arr1[i][s] << " ";
+            }
+            cout << endl;
         }
     }
+    else cout << "Cannot perform subtration due to wrong matrices dimension./n";
 }
 
-void multiplication(float arr1[][100], float arr2[][100], const int n1, const int n2, const int m1, const int m2){
+void multiplication(float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
     int result[100][100];
     if( n1 != m2) cout << "The number of column in matrix 1 does not match the number of row in matrix 2, so that the operation cannot be done./n" ;
     else{
+        cout << "Result after multiplication is:/n";
         for (int i = 0; i < n1; i++) {
             for (int j = 0; j < m2; j++) {
                 result[i][j] = 0;
                 for (int k = 0; k < n2; k++) {result[i][j] += arr1[i][k] * arr2[k][j];}
-                cout << result[i][j] << "\t";
+                cout << result[i][j] << " ";
             }
             cout << endl;
         }

@@ -13,7 +13,7 @@ int main() {
     
     //Initilization
     bool outOfLoop = true;
-    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0;
+    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0, readCol, readRow;
     float arr1[100][100], arr2[100][100];
 
     //Load file or input from key board
@@ -35,13 +35,26 @@ int main() {
                 if (! fp) {
                     cout << "Error, file couldn't be opened" << endl; 
                     return 1; 
-                }    
-                for(int row = 0; row < 100; row++) {  // stop loops if nothing to read
-                for(int column = 0; column < 100; column++){
+                }
+                fp >> readCol;
+                fp >> readRow;
+                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < readCol; column++){
                         fp >> arr1[row][column];
                         if ( ! fp ) {
-                        cout << "Error reading file for element " << row << "," << column << endl; 
-                        return 1; 
+                            cout << "Error reading file for element " << row << "," << column << endl; 
+                            return 1; 
+                        }
+                    }
+                }
+                fp >> readCol;
+                fp >> readRow;
+                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < readCol; column++){
+                        fp >> arr2[row][column];
+                        if ( ! fp ) {
+                            cout << "Error reading file for element " << row << "," << column << endl; 
+                            return 1; 
                         }
                     }
                 }
@@ -114,12 +127,25 @@ int main() {
                     cout << "Error, file couldn't be opened" << endl; 
                     return 1; 
                 }    
-                for(int row = 0; row < 100; row++) {  // stop loops if nothing to read
-                for(int column = 0; column < 100; column++){
+                fp >> readCol;
+                fp >> readRow;
+                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < readCol; column++){
                         fp >> arr1[row][column];
                         if ( ! fp ) {
-                        cout << "Error reading file for element " << row << "," << column << endl; 
-                        return 1; 
+                            cout << "Error reading file for element " << row << "," << column << endl; 
+                            return 1; 
+                        }
+                    }
+                }
+                fp >> readCol;
+                fp >> readRow;
+                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < readCol; column++){
+                        fp >> arr2[row][column];
+                        if ( ! fp ) {
+                            cout << "Error reading file for element " << row << "," << column << endl; 
+                            return 1; 
                         }
                     }
                 }

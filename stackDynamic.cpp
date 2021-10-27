@@ -149,9 +149,60 @@ int main() {
                         }
                     }
                 }
+                cout << "Matrix 1:/n";
+                for(int i = 0; i < readRow; i++){
+                    for(int n = 0; n < readCol; n++){
+                        cout << arr1[i][n] << " ";
+                    }
+                    cout << endl;
+                }
+                cout << "Matrix 2:/n";
+                for(int i = 0; i < readRow; i++){
+                    for(int n = 0; n < readCol; n++){
+                        cout << arr1[i][n] << " ";
+                    }
+                    cout << endl;
+                }
             }
             break;
-        case 2: 
+        case 2:
+        {
+            cout << "Enter number of row for matrix 1: ";
+            cin >> readRow;
+            cout << "Enter number of column for matrix 1: ";
+            cin >> readCol;
+            for(int i = 0; i < readRow; i++){
+                for(int n = 0; n < readCol; n++){
+                    cout << "Enter value for space " << readRow + 1 << "x" << readCol + 1 << ": ";
+                    cin >> arr1[i][n];
+                }
+            }
+            cout << "Enter number of row for matrix 2: ";
+            cin >> readRow;
+            cout << "Enter number of column for matrix 2: ";
+            cin >> readCol;
+            for(int i = 0; i < readRow; i++){
+                for(int n = 0; n < readCol; n++){
+                    cout << "Enter value for space " << readRow + 1 << "x" << readCol + 1 << ": ";
+                    cin >> arr2[i][n];
+                }
+            }
+            cout << "Matrix 1:/n";
+            for(int i = 0; i < readRow; i++){
+                for(int n = 0; n < readCol; n++){
+                    cout << arr1[i][n] << " ";
+                }
+                cout << endl;
+            }
+            cout << "Matrix 2:/n";
+            for(int i = 0; i < readRow; i++){
+                for(int n = 0; n < readCol; n++){
+                    cout << arr1[i][n] << " ";
+                }
+                cout << endl;
+            }
+
+        } 
             break;
         default: 
             cout << "Wrong input. Exit\n";

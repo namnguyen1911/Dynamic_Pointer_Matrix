@@ -122,7 +122,7 @@ int main() {
         cout << "1. Addition\n";
         cout << "2. Subtraction\n";
         cout << "3. Multiplication\n";
-        cout << "4. Create other two matrices\n";
+        cout << "4. Go Back\n";
         cout << "=============================\n";
         cout << "Enter your option: ";
         cin >> option;
@@ -145,9 +145,6 @@ int main() {
             case 3:
                 multiplication(arr1, arr2, rowOfMatrix1, colOfMatrix1, rowOfMatrix2, colOfMatrix2); break;
             case 4:
-                //Remove the old matrices
-                
-
                 //Create new matrices
                 //Load file or input from key board
                 cout << "=============================\n";

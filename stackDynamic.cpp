@@ -6,14 +6,14 @@ using namespace std;
 
 void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
 void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
-void multiplication(int arr1[][100], int arr2[][100], int n1, int n2, int m1, int m2);
+void multiplication(float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
 
 
 int main() {
     
     //Initilization
     bool outOfLoop = true;
-    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0, readCol, readRow;
+    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0;
     float arr1[100][100], arr2[100][100];
 
     //Load file or input from key board
@@ -36,10 +36,10 @@ int main() {
                     cout << "Error, file couldn't be opened" << endl; 
                     return 1; 
                 }
-                fp >> readCol;
-                fp >> readRow;
-                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
-                    for(int column = 0; column < readCol; column++){
+                fp >> rowOfMatrix1;
+                fp >> colOfMatrix1;
+                for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < colOfMatrix1; column++){
                         fp >> arr1[row][column];
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
@@ -47,10 +47,10 @@ int main() {
                         }
                     }
                 }
-                fp >> readCol;
-                fp >> readRow;
-                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
-                    for(int column = 0; column < readCol; column++){
+                fp >> rowOfMatrix2;
+                fp >> colOfMatrix2;
+                for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < colOfMatrix2; column++){
                         fp >> arr2[row][column];
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
@@ -60,7 +60,44 @@ int main() {
                 }
             }
             break;
-        case 2: 
+        case 2:
+        {
+            cout << "Enter number of row for matrix 1: ";
+            cin >> rowOfMatrix1;
+            cout << "Enter number of column for matrix 1: ";
+            cin >> colOfMatrix1;
+            for(int i = 0; i < rowOfMatrix1; i++){
+                for(int n = 0; n < colOfMatrix1; n++){
+                    cout << "Enter value for space " << rowOfMatrix1 + 1 << "x" << colOfMatrix1 + 1 << ": ";
+                    cin >> arr1[i][n];
+                }
+            }
+            cout << "Enter number of row for matrix 2: ";
+            cin >> rowOfMatrix2;
+            cout << "Enter number of column for matrix 2: ";
+            cin >> colOfMatrix2;
+            for(int i = 0; i < rowOfMatrix2; i++){
+                for(int n = 0; n < colOfMatrix2; n++){
+                    cout << "Enter value for space " << rowOfMatrix2 + 1 << "x" << colOfMatrix2 + 1 << ": ";
+                    cin >> arr2[i][n];
+                }
+            }
+            cout << "Matrix 1:/n";
+            for(int i = 0; i < rowOfMatrix1; i++){
+                for(int n = 0; n < colOfMatrix1; n++){
+                    cout << arr1[i][n] << " ";
+                }
+                cout << endl;
+            }
+            cout << "Matrix 2:/n";
+            for(int i = 0; i < rowOfMatrix2; i++){
+                for(int n = 0; n < colOfMatrix2; n++){
+                    cout << arr1[i][n] << " ";
+                }
+                cout << endl;
+            }
+
+        }
             break;
         default: 
             cout << "Wrong input. Exit\n";
@@ -127,10 +164,10 @@ int main() {
                     cout << "Error, file couldn't be opened" << endl; 
                     return 1; 
                 }    
-                fp >> readCol;
-                fp >> readRow;
-                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
-                    for(int column = 0; column < readCol; column++){
+                fp >> rowOfMatrix1;
+                fp >> colOfMatrix2;
+                for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < colOfMatrix1; column++){
                         fp >> arr1[row][column];
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
@@ -138,10 +175,10 @@ int main() {
                         }
                     }
                 }
-                fp >> readCol;
-                fp >> readRow;
-                for(int row = 0; row < readRow; row++) {  // stop loops if nothing to read
-                    for(int column = 0; column < readCol; column++){
+                fp >> rowOfMatrix2;
+                fp >> colOfMatrix2;
+                for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
+                    for(int column = 0; column < colOfMatrix2; column++){
                         fp >> arr2[row][column];
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
@@ -150,15 +187,15 @@ int main() {
                     }
                 }
                 cout << "Matrix 1:/n";
-                for(int i = 0; i < readRow; i++){
-                    for(int n = 0; n < readCol; n++){
+                for(int i = 0; i < rowOfMatrix1; i++){
+                    for(int n = 0; n < colOfMatrix1; n++){
                         cout << arr1[i][n] << " ";
                     }
                     cout << endl;
                 }
                 cout << "Matrix 2:/n";
-                for(int i = 0; i < readRow; i++){
-                    for(int n = 0; n < readCol; n++){
+                for(int i = 0; i < rowOfMatrix2; i++){
+                    for(int n = 0; n < colOfMatrix2; n++){
                         cout << arr1[i][n] << " ";
                     }
                     cout << endl;
@@ -168,35 +205,35 @@ int main() {
         case 2:
         {
             cout << "Enter number of row for matrix 1: ";
-            cin >> readRow;
+            cin >> rowOfMatrix1;
             cout << "Enter number of column for matrix 1: ";
-            cin >> readCol;
-            for(int i = 0; i < readRow; i++){
-                for(int n = 0; n < readCol; n++){
-                    cout << "Enter value for space " << readRow + 1 << "x" << readCol + 1 << ": ";
+            cin >> colOfMatrix1;
+            for(int i = 0; i < rowOfMatrix1; i++){
+                for(int n = 0; n < colOfMatrix1; n++){
+                    cout << "Enter value for space " << rowOfMatrix1 + 1 << "x" << colOfMatrix1 + 1 << ": ";
                     cin >> arr1[i][n];
                 }
             }
             cout << "Enter number of row for matrix 2: ";
-            cin >> readRow;
+            cin >> rowOfMatrix2;
             cout << "Enter number of column for matrix 2: ";
-            cin >> readCol;
-            for(int i = 0; i < readRow; i++){
-                for(int n = 0; n < readCol; n++){
-                    cout << "Enter value for space " << readRow + 1 << "x" << readCol + 1 << ": ";
+            cin >> colOfMatrix2;
+            for(int i = 0; i < rowOfMatrix2; i++){
+                for(int n = 0; n < colOfMatrix2; n++){
+                    cout << "Enter value for space " << rowOfMatrix2 + 1 << "x" << colOfMatrix2 + 1 << ": ";
                     cin >> arr2[i][n];
                 }
             }
             cout << "Matrix 1:/n";
-            for(int i = 0; i < readRow; i++){
-                for(int n = 0; n < readCol; n++){
+            for(int i = 0; i < rowOfMatrix1; i++){
+                for(int n = 0; n < colOfMatrix1; n++){
                     cout << arr1[i][n] << " ";
                 }
                 cout << endl;
             }
             cout << "Matrix 2:/n";
-            for(int i = 0; i < readRow; i++){
-                for(int n = 0; n < readCol; n++){
+            for(int i = 0; i < rowOfMatrix2; i++){
+                for(int n = 0; n < colOfMatrix2; n++){
                     cout << arr1[i][n] << " ";
                 }
                 cout << endl;

@@ -2,8 +2,10 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
 void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2);
@@ -18,6 +20,7 @@ int main() {
     string toFloat;
     string::size_type sz;
     float arr1[100][100], arr2[100][100];
+    
 
     //Load file or input from key board
     cout << "=============================\n";
@@ -258,6 +261,7 @@ int main() {
 }
 
 void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
+    auto start = high_resolution_clock::now();
     if(n1 == n2 && m1 == m2){
         cout << "Result after addtion is:\n";
         for(int i = 0; i < n1; i++){
@@ -269,9 +273,13 @@ void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int
         }
     }
     else cout << "Cannot perform addition due to wrong matrices dimension.\n";
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(stop - start);
+    cout << "The operation runs in " << duration.count() << "nanoseconds" << endl;
 }
 
 void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
+    auto start = high_resolution_clock::now();
     if(n1 == n2 && m1 == m2){
         cout << "Result after subtraction is:\n";
         for(int i = 0; i < n1; i++){
@@ -283,9 +291,13 @@ void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, 
         }
     }
     else cout << "Cannot perform subtration due to wrong matrices dimension.\n";
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(stop - start);
+    cout << "The operation runs in " << duration.count() << "nanoseconds" << endl;
 }
 
 void multiplication(float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
+    auto start = high_resolution_clock::now();
     int result[100][100];
     if( n1 != m2) cout << "The number of column in matrix 1 does not match the number of row in matrix 2, so that the operation cannot be done.\n" ;
     else{
@@ -299,4 +311,7 @@ void multiplication(float arr1[][100], float arr2[][100], int n1, int n2, int m1
             cout << endl;
         }
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(stop - start);
+    cout << "The operation runs in " << duration.count() << "nanoseconds" << endl;
 }

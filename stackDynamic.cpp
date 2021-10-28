@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -13,7 +14,9 @@ int main() {
     
     //Initilization
     bool outOfLoop = true;
-    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0, toFloat;
+    int option = 0, rowOfMatrix1 = 0, colOfMatrix1 = 0, rowOfMatrix2 = 0, colOfMatrix2 = 0;
+    string toFloat;
+    string::size_type sz;
     float arr1[100][100], arr2[100][100];
 
     //Load file or input from key board
@@ -41,7 +44,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix1; column++){
                         fp >> toFloat;
-                        arr1[row][column] = (float) toFloat;
+                        arr1[row][column] = stof(toFloat.substr(sz));
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -53,7 +56,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix2; column++){
                         fp >> toFloat;
-                        arr2[row][column] = (float) toFloat;
+                        arr2[row][column] = stof(toFloat.substr(sz));
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -171,7 +174,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix1; column++){
                         fp >> toFloat;
-                        arr1[row][column] = (float) toFloat;
+                        arr1[row][column] = stof(toFloat.substr(sz));
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -183,7 +186,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix2; column++){
                         fp >> toFloat;
-                        arr2[row][column] = (float) toFloat;
+                        arr2[row][column] = stof(toFloat.substr(sz));
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 

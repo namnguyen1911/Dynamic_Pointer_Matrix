@@ -44,7 +44,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix1; column++){
                         fp >> toFloat;
-                        arr1[row][column] = stof(toFloat.substr(sz));
+                        arr1[row][column] = stof(toFloat, &sz);
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -56,7 +56,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix2; column++){
                         fp >> toFloat;
-                        arr2[row][column] = stof(toFloat.substr(sz));
+                        arr2[row][column] = stof(toFloat, &sz);
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -87,14 +87,14 @@ int main() {
                     cin >> arr2[i][n];
                 }
             }
-            cout << "Matrix 1:/n";
+            cout << "Matrix 1:\n";
             for(int i = 0; i < rowOfMatrix1; i++){
                 for(int n = 0; n < colOfMatrix1; n++){
                     cout << arr1[i][n] << " ";
                 }
                 cout << endl;
             }
-            cout << "Matrix 2:/n";
+            cout << "Matrix 2:\n";
             for(int i = 0; i < rowOfMatrix2; i++){
                 for(int n = 0; n < colOfMatrix2; n++){
                     cout << arr1[i][n] << " ";
@@ -174,7 +174,7 @@ int main() {
                 for(int row = 0; row < rowOfMatrix1; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix1; column++){
                         fp >> toFloat;
-                        arr1[row][column] = stof(toFloat.substr(sz));
+                        arr1[row][column] = stof(toFloat, &sz);
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
@@ -186,21 +186,21 @@ int main() {
                 for(int row = 0; row < rowOfMatrix2; row++) {  // stop loops if nothing to read
                     for(int column = 0; column < colOfMatrix2; column++){
                         fp >> toFloat;
-                        arr2[row][column] = stof(toFloat.substr(sz));
+                        arr2[row][column] = stof(toFloat, &sz);
                         if ( ! fp ) {
                             cout << "Error reading file for element " << row << "," << column << endl; 
                             return 1; 
                         }
                     }
                 }
-                cout << "Matrix 1:/n";
+                cout << "Matrix 1:\n";
                 for(int i = 0; i < rowOfMatrix1; i++){
                     for(int n = 0; n < colOfMatrix1; n++){
                         cout << arr1[i][n] << " ";
                     }
                     cout << endl;
                 }
-                cout << "Matrix 2:/n";
+                cout << "Matrix 2:\n";
                 for(int i = 0; i < rowOfMatrix2; i++){
                     for(int n = 0; n < colOfMatrix2; n++){
                         cout << arr1[i][n] << " ";
@@ -231,14 +231,14 @@ int main() {
                     cin >> arr2[i][n];
                 }
             }
-            cout << "Matrix 1:/n";
+            cout << "Matrix 1:\n";
             for(int i = 0; i < rowOfMatrix1; i++){
                 for(int n = 0; n < colOfMatrix1; n++){
                     cout << arr1[i][n] << " ";
                 }
                 cout << endl;
             }
-            cout << "Matrix 2:/n";
+            cout << "Matrix 2:\n";
             for(int i = 0; i < rowOfMatrix2; i++){
                 for(int n = 0; n < colOfMatrix2; n++){
                     cout << arr1[i][n] << " ";
@@ -262,7 +262,7 @@ int main() {
 
 void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
     if(n1 == n2 && m1 == m2){
-        cout << "Result after addtion is:/n";
+        cout << "Result after addtion is:\n";
         for(int i = 0; i < n1; i++){
             for(int s = 0; s < m1; s++){
                 arr1[i][s] += arr2[i][s];
@@ -271,12 +271,12 @@ void addition (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int
             cout << endl;
         }
     }
-    else cout << "Cannot perform addition due to wrong matrices dimension./n";
+    else cout << "Cannot perform addition due to wrong matrices dimension.\n";
 }
 
 void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
     if(n1 == n2 && m1 == m2){
-        cout << "Result after subtraction is:/n";
+        cout << "Result after subtraction is:\n";
         for(int i = 0; i < n1; i++){
             for(int s = 0; s < m1; s++){
                 arr1[i][s] -= arr2[i][s];
@@ -285,14 +285,14 @@ void subtraction (float arr1[][100], float arr2[][100], int n1, int n2, int m1, 
             cout << endl;
         }
     }
-    else cout << "Cannot perform subtration due to wrong matrices dimension./n";
+    else cout << "Cannot perform subtration due to wrong matrices dimension.\n";
 }
 
 void multiplication(float arr1[][100], float arr2[][100], int n1, int n2, int m1, int m2){
     int result[100][100];
-    if( n1 != m2) cout << "The number of column in matrix 1 does not match the number of row in matrix 2, so that the operation cannot be done./n" ;
+    if( n1 != m2) cout << "The number of column in matrix 1 does not match the number of row in matrix 2, so that the operation cannot be done.\n" ;
     else{
-        cout << "Result after multiplication is:/n";
+        cout << "Result after multiplication is:\n";
         for (int i = 0; i < n1; i++) {
             for (int j = 0; j < m2; j++) {
                 result[i][j] = 0;
